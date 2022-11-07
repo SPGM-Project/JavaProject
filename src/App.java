@@ -2,7 +2,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         ArrayList al = new ArrayList(10);
         al.init();
-        al.insert(10);
+        al.insert(50);
         al.insert(20);
         al.insert(30);
         al.insert(40);
@@ -29,18 +29,16 @@ class ArrayList{
     }
 
     void insert(int insertData){
-        if (numOfDatas == 0) {
-            if (numOfDatas < List_Size) {
-                List[numOfDatas++] = insertData;
-            }
-            else {
-                System.out.println("꽉찼습니다");
-            }
+        if (numOfDatas < List_Size) {
+            List[numOfDatas++] = insertData;
+        }
+        else {
+            System.out.println("꽉찼습니다!");
         }
     }
 
     void printAll() {
-        for(int i : List){
+        for(int i=0;i<numOfDatas; i++){
             System.out.print("[" + List[i] + "]");
         }
         System.out.println();
@@ -59,7 +57,7 @@ class ArrayList{
             System.out.println("데이터 없음");
             return;
         }
-        for (int i : List)
+        for (int i =0;i<numOfDatas;i++)
             if (List[i] == deleteData) {
                 for (int j = i+1; j < numOfDatas; j++) { 
                     List[j-1] = List[j];
