@@ -1,17 +1,17 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        ArrayList al = new ArrayList(10);
-        al.init();
-        al.insert(50);
-        al.insert(20);
-        al.insert(30);
-        al.insert(40);
-        al.insert(50);
-        al.insert(50);
-        al.insert(50);
-        al.printAll();
-        al.delete(50);
-        al.printAll();
+        Stack s = new Stack(10);
+        s.init();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.push(5);
+        s.peek();
+        s.pop();
+        s.pop();
+        s.pop();
+        s.pop();
     }
 }
 class ArrayList{
@@ -77,5 +77,38 @@ class ArrayList{
                 List[i] = updateData;
                 return;
             }
+    }
+}
+
+class Stack{
+    int[] Stack;
+    int topIdx;
+    int Stack_Size;
+    Stack(int Stack_Size){
+        this.Stack_Size = Stack_Size;
+        this.Stack = new int[Stack_Size];
+        this.topIdx = -1;
+    }
+
+    void init() {
+        topIdx = -1;
+    }
+
+    void push(int data) {
+        if (topIdx < Stack_Size - 1)
+            Stack[++topIdx] = data;
+    }
+
+    void pop() {
+        if (topIdx >= 0) {
+            System.out.println("가장 위의 값 꺼냄 : " + Stack[topIdx--]);
+            return;
+        }
+        System.out.println("undefined");
+        return;
+    }
+
+    void peek() {
+        System.out.println("가장 위의 값 : " + Stack[topIdx]); 
     }
 }
