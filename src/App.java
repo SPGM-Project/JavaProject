@@ -17,7 +17,7 @@ public class App {
         q.deQueue();
         q.deQueue();
         q.printAll();
-        q.enQueuedj(9);
+        q.enQueue(9);
         q.enQueue(10);
         q.printAll();
         q.deQueue();
