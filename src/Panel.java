@@ -21,30 +21,34 @@ class Panel extends JFrame implements ActionListener {
     JPanel mainPanel = new JPanel();
     Panel1 panel1 = new Panel1();
     Panel2 panel2 = new Panel2();
+    Panel3 panel3 = new Panel3();
+    Panel4 panel4 = new Panel4();
 
     Panel(){
         menuBar = new JMenuBar();
-        menu1 = new JMenu("File");
-        menu2 = new JMenu("Edit");
+        menu1 = new JMenu("자료구조");
+        menu2 = new JMenu("");
 
         menuBar.add(menu1);
         menuBar.add(menu2);
 
-        item1 = new JMenuItem("new");
-        item2 = new JMenuItem("Open File");
-        item3 = new JMenuItem("Undo Typing");
-        item4 = new JMenuItem("Redo");
+        item1 = new JMenuItem("ArrayList");
+        item2 = new JMenuItem("LinkedList");
+        item3 = new JMenuItem("Stack");
+        item4 = new JMenuItem("Queue");
 
         menu1.add(item1);
         menu1.add(item2);
-        menu2.add(item3);
-        menu2.add(item4);
+        menu1.add(item3);
+        menu1.add(item4);
 
         setJMenuBar(menuBar);
 
         add(mainPanel);
         mainPanel.add(panel1);
         mainPanel.add(panel2);
+        mainPanel.add(panel3);
+        mainPanel.add(panel4);
 
         item1.addActionListener(this);
         item2.addActionListener(this);
@@ -69,13 +73,16 @@ class Panel extends JFrame implements ActionListener {
                 togle(0);
 		} else if(e.getSource() == item2) {
                 togle(1);
-
-		}
+		} else if(e.getSource() == item3){
+            togle(2);
+        } else if(e.getSource() == item4){
+            togle(3);
+        }
 	}
 
     void togle(int selected){
-        JPanel[] ary = {panel1, panel2};
-        for(int i =0;i<ary.length; i++){
+        JPanel[] ary = {panel1, panel2, panel3, panel4};
+        for(int i = 0;i<ary.length; i++){
             ary[i].setVisible(false);
             if(i == selected) ary[i].setVisible(true);
         }
