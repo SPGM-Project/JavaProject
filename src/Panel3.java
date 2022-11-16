@@ -54,15 +54,13 @@ public class Panel3 extends JPanel {
                 // TODO Auto-generated method stub
                 
                 if(e.getSource() == formBTN){
-                    String jft = jf.getText();
-                    int intj = Integer.valueOf(jft);
-                    if(cnt==0){
-                        alert.setText("스택이 꽉찼음");
-                        return;
-                    }
-                    if(jft == ""){
-                        alert.setText("넣을 값이 없음");
-                    } else{
+                    try {
+                        String jft = jf.getText();
+                        int intj = Integer.valueOf(jft);
+                        if(cnt==0){
+                            alert.setText("스택이 꽉찼음");
+                            return;
+                        }
                         alert.setText("");
                         if(cnt<5)
                             btns[cnt].setText("");
@@ -70,22 +68,33 @@ public class Panel3 extends JPanel {
                         stack.push(intj);
                         System.out.println(intj);
                         stack.peek();
+                    } catch (Exception events) {
+                        // TODO: handle exception
+                        if(cnt == 4){
+                            return;
+                        }
+                        alert.setText("넣을 값이 없음");
+                        return;
                     }
                 }
                 else if (e.getSource() == delBTN){
-                    if(cnt==4){
+                    if(cnt==5){
                         alert.setText("지울 데이터가 없음");
                         return;
                     }
                     alert.setText("");
-                    btns[++cnt].setText(String.valueOf(stack.peek()));
-                    btns[cnt-1].setText("");
-                    stack.pop();
+                    try {
+                        btns[cnt].setText("비어있음");
+                        btns[++cnt].setText(String.valueOf(stack.peek()));
+                        stack.pop();
+                    } catch (Exception event) {
+                        // TODO: handle exception
+                    }
                 }
                 else if (e.getSource() == initBTN){
                     alert.setText("");
                     for(int i = 0; i<5; i++){
-                    btns[i].setText("값이 없음");
+                    btns[i].setText("비어있음");
                     }
                     cnt = 5;
                     stack.init();
