@@ -26,7 +26,8 @@ public class Stack{
         return;
     }
 
-    void peek() {
+    int peek() {
         System.out.println("가장 위의 값 : " + Stack[topIdx]); 
+        return Stack[topIdx-1];
     }
 }
