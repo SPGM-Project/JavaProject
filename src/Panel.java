@@ -56,7 +56,7 @@ class Panel extends JFrame implements ActionListener {
         item4.addActionListener(this);
         
         
-        setSize(400,500);
+        setSize(800,1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
