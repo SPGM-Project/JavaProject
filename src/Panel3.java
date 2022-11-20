@@ -9,11 +9,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import javax.swing.JOptionPane;
 
 public class Panel3 extends JPanel {
     int cnt = 5;
     Panel3() {
+        JOptionPane aa = new JOptionPane();
+		String number = aa.showInputDialog("stack의 size 입력");
+        int num = Integer.valueOf(number);
+        System.out.println(num);
+        cnt = num;
         JPanel upperPanel = new JPanel();
         JPanel lowerPanel = new JPanel();
         JPanel middlePanel = new JPanel();
@@ -35,8 +40,8 @@ public class Panel3 extends JPanel {
         add(upperPanel, BorderLayout.NORTH);
         add(lowerPanel, BorderLayout.SOUTH);
 
-        middlePanel.setLayout(new GridLayout(5,1));
-        JButton btns[] = new JButton[5];
+        middlePanel.setLayout(new GridLayout(num,1));
+        JButton btns[] = new JButton[num];
 		for (int i = 0; i < btns.length; i++) {
 			btns[i] = new JButton("비어있음");
 			middlePanel.add(btns[i]);
@@ -46,7 +51,7 @@ public class Panel3 extends JPanel {
         add(middlePanel, BorderLayout.CENTER);
         
         setVisible(false);
-        Stack stack = new Stack(5);
+        Stack stack = new Stack(num);
         ActionListener listener = new ActionListener() {
     
             @Override
@@ -62,7 +67,7 @@ public class Panel3 extends JPanel {
                             return;
                         }
                         alert.setText("");
-                        if(cnt<5)
+                        if(cnt<num)
                             btns[cnt].setText("");
                         btns[--cnt].setText(jft);
                         stack.push(intj);
@@ -70,7 +75,7 @@ public class Panel3 extends JPanel {
                         stack.peek();
                     } catch (Exception events) {
                         // TODO: handle exception
-                        if(cnt == 4){
+                        if(cnt == num-1){
                             return;
                         }
                         alert.setText("넣을 값이 없음");
@@ -78,7 +83,7 @@ public class Panel3 extends JPanel {
                     }
                 }
                 else if (e.getSource() == delBTN){
-                    if(cnt==5){
+                    if(cnt==num){
                         alert.setText("지울 데이터가 없음");
                         return;
                     }
@@ -93,10 +98,10 @@ public class Panel3 extends JPanel {
                 }
                 else if (e.getSource() == initBTN){
                     alert.setText("");
-                    for(int i = 0; i<5; i++){
+                    for(int i = 0; i<num; i++){
                     btns[i].setText("비어있음");
                     }
-                    cnt = 5;
+                    cnt = num;
                     stack.init();
                 }
                 }
