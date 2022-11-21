@@ -14,14 +14,14 @@ import java.util.ArrayList;
 
 public class Panel2 extends JPanel {
     int cnt = 0;
+    JPanel upperPanel = new JPanel();
+    JPanel lowerPanel = new JPanel();
+    JPanel middlePanel = new JPanel();
     Panel2() {
         setLayout(new BorderLayout());
 
         LinkedList linkedList = new LinkedList();
 
-        JPanel upperPanel = new JPanel();
-        JPanel lowerPanel = new JPanel();
-        JPanel middlePanel = new JPanel();
 
         JTextField jf = new JTextField(10);
         upperPanel.add(new JLabel("LinkedList"));
@@ -82,13 +82,14 @@ public class Panel2 extends JPanel {
                                 remove(middlePanel);
                                 jbtns.remove(i);
                                 jlbs.remove(i);
-                                JPanel middlePanel = new JPanel();
+                                middlePanel = new JPanel();
                                 add(middlePanel, BorderLayout.CENTER);
                                 for(int j = 0; j < jbtns.size(); j++){
                                     middlePanel.add(jbtns.get(j));
                                     middlePanel.add(jlbs.get(j));
                                 }
                                 cnt--;
+                                i--;
                             }
                         }
                         linkedList.delete(intj);
