@@ -71,7 +71,14 @@ public class Panel1 extends JPanel implements ActionListener{
         if (e.getSource() == enterBtn) {
             switch (dropdownBox.getSelectedIndex()) {
                 case 0:
+                if (arrayList.numOfDatas == arrayList.List_Size) {
+                    explainLabel.setText("배열이 꽉 참.");
+                    return;
+                }
                 arrayList.insert(Integer.parseInt(textField.getText()));
+                int nod = arrayList.numOfDatas - 1;
+                String str = Integer.toString(nod);
+                explainLabel.setText(String.valueOf(str) + "번째 인덱스에 데이터 " + String.valueOf(arrayList.List[nod]) + " 값을 삽입함.");
                 break;
 
                 case 1:
