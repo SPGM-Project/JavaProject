@@ -14,6 +14,7 @@ import javax.swing.JPanel;
  * 4. '메뉴바'를 에 add
  */
 class Panel extends JFrame implements ActionListener {
+
     JMenuBar menuBar;
     JMenu menu1,menu2;
     JMenuItem item1, item2, item3, item4;

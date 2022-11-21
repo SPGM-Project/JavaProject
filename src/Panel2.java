@@ -73,11 +73,35 @@ public class Panel2 extends JPanel {
                 } else if(e.getSource() == updateBTN){
 
                 } else if(e.getSource() == delBTN){
-
+                    try {
+                        String jft = jf.getText();
+                        int intj = Integer.valueOf(jft);
+                        for(int i = 0; i < jbtns.size(); i++){
+                            String bjft = jbtns.get(i).getText();
+                            if(bjft.equals(jft)){
+                                remove(middlePanel);
+                                jbtns.remove(i);
+                                jlbs.remove(i);
+                                JPanel middlePanel = new JPanel();
+                                add(middlePanel, BorderLayout.CENTER);
+                                for(int j = 0; j < jbtns.size(); j++){
+                                    middlePanel.add(jbtns.get(j));
+                                    middlePanel.add(jlbs.get(j));
+                                }
+                                cnt--;
+                            }
+                        }
+                        linkedList.delete(intj);
+                        alert.setText(String.valueOf(cnt));
+                    } catch (Exception events) {
+                        alert.setText("지울 값이 없음");
+                        return;
+                    }
                 }
             }
         };
         formBTN.addActionListener(listener);
+        delBTN.addActionListener(listener);
     }
 
 }
