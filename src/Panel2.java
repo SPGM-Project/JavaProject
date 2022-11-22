@@ -20,7 +20,7 @@ public class Panel2 extends JPanel {
     Panel2() {
         setLayout(new BorderLayout());
 
-        LinkedList linkedList = new LinkedList();
+        // LinkedList linkedList = new LinkedList();
 
 
         JTextField jf = new JTextField(10);
@@ -58,7 +58,7 @@ public class Panel2 extends JPanel {
                         String jft = jf.getText();
                         int intj = Integer.valueOf(jft);
 
-                        linkedList.insert(intj);
+                        // linkedList.insert(intj);
 
                         jbtns.add(new JButton(jft));
                         middlePanel.add(jbtns.get(cnt));
@@ -82,6 +82,7 @@ public class Panel2 extends JPanel {
                                 jbtns.get(i).setText(jfUt);
                             }
                         }
+                        // // linkedList.update(intj, jfutj);
                     } catch (Exception event){
                         alert.setText("업데이트 값이 없음");
                         return;
@@ -106,18 +107,31 @@ public class Panel2 extends JPanel {
                                 i--;
                             }
                         }
-                        linkedList.delete(intj);
+                        // linkedList.delete(intj);
                         alert.setText(String.valueOf(cnt));
                     } catch (Exception events) {
                         alert.setText("지울 값이 없음");
                         return;
                     }
+                } else if(e.getSource() == initBTN){
+                    for(int j = 0; j<3; j++){
+                        remove(middlePanel);
+                        for(int i = 0; i < jbtns.size(); i++){
+                            jbtns.remove(i);
+                            jlbs.remove(i);
+                        }
+                        middlePanel = new JPanel();
+                        add(middlePanel, BorderLayout.CENTER);
+                        cnt = 0;
+                    }
+                    alert.setText("비어있음");
                 }
             }
         };
         formBTN.addActionListener(listener);
         delBTN.addActionListener(listener);
         updateBTN.addActionListener(listener);
+        initBTN.addActionListener(listener);
     }
 
 }

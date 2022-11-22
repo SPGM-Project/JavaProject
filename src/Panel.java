@@ -65,7 +65,6 @@ class Panel extends JFrame implements ActionListener {
     public static void main(String[] args) {
         Panel frame = new Panel();
     }
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
