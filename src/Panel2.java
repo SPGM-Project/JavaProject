@@ -71,7 +71,21 @@ public class Panel2 extends JPanel {
                         return;
                     }
                 } else if(e.getSource() == updateBTN){
-
+                    try {
+                        String jft = jf.getText();
+                        int intj = Integer.valueOf(jft);
+                        String jfUt = jfU.getText();
+                        int jfutj = Integer.valueOf(jfUt);
+                        for(int i = 0; i < jbtns.size(); i++){
+                            String bjft = jbtns.get(i).getText();
+                            if(bjft.equals(jft)){
+                                jbtns.get(i).setText(jfUt);
+                            }
+                        }
+                    } catch (Exception event){
+                        alert.setText("업데이트 값이 없음");
+                        return;
+                    }                    
                 } else if(e.getSource() == delBTN){
                     try {
                         String jft = jf.getText();
@@ -103,6 +117,7 @@ public class Panel2 extends JPanel {
         };
         formBTN.addActionListener(listener);
         delBTN.addActionListener(listener);
+        updateBTN.addActionListener(listener);
     }
 
 }
