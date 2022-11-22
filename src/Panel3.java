@@ -15,7 +15,7 @@ public class Panel3 extends JPanel {
     int cnt = 5;
     Panel3() {
         JOptionPane aa = new JOptionPane();
-		String number = aa.showInputDialog("stack의 size 입력");
+		String number = aa.showInputDialog("stack의 size를 입력");
         int num = Integer.valueOf(number);
         System.out.println(num);
         cnt = num;

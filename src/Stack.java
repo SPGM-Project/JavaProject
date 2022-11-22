@@ -19,7 +19,7 @@ public class Stack{
 
     void pop() {
         if (topIdx >= 0) {
-            // System.out.println("가장 위의 값 꺼냄 : " + Stack[topIdx--]);
+            System.out.println("가장 위의 값 꺼냄 : " + Stack[topIdx--]);
             return;
         }
         System.out.println("undefined");
@@ -27,7 +27,7 @@ public class Stack{
     }
 
     int peek() {
-        // System.out.println("가장 위의 값 : " + Stack[topIdx]); 
+        System.out.println("가장 위의 값은 : " + Stack[topIdx]); 
         return Stack[topIdx-1];
     }
 }
