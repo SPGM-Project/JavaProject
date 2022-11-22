@@ -12,7 +12,6 @@ import javax.swing.JTextField;
 public class Panel1 extends JPanel implements ActionListener{
     JButton enterBtn = new JButton("등록");
     JButton listInitBtn = new JButton("배열 초기화");
-    JButton printAllBtn = new JButton("배열 출력");
 
     String[] feature = {"Insert", "Search", "Update", "Delete"};
     JComboBox dropdownBox = new JComboBox<>(feature);
@@ -44,7 +43,6 @@ public class Panel1 extends JPanel implements ActionListener{
         upperPanel.add(new JLabel("정수값 입력"));
         upperPanel.add(enterBtn);
         upperPanel.add(listInitBtn);
-        upperPanel.add(printAllBtn);
         add(upperPanel, BorderLayout.NORTH);
 
         updateLabel.setVisible(false);
@@ -59,7 +57,6 @@ public class Panel1 extends JPanel implements ActionListener{
 
         enterBtn.addActionListener(this);
         listInitBtn.addActionListener(this);
-        printAllBtn.addActionListener(this);
         dropdownBox.addActionListener(this);
     }
 
@@ -78,6 +75,7 @@ public class Panel1 extends JPanel implements ActionListener{
                 arrayList.insert(Integer.parseInt(textField.getText()));
                 int nod = arrayList.numOfDatas - 1;
                 String str = Integer.toString(nod);
+                printAll();
                 explainLabel.setText(String.valueOf(str) + "번째 인덱스에 데이터 " + String.valueOf(arrayList.List[nod]) + " 값을 삽입함.");
                 break;
 
@@ -92,26 +90,18 @@ public class Panel1 extends JPanel implements ActionListener{
 
                 case 2:
                 arrayList.update(Integer.parseInt(textField.getText()), Integer.parseInt(updateTextField.getText()));
+                printAll();
                 break;
 
                 case 3:
                 arrayList.delete(Integer.parseInt(textField.getText()));
+                printAll();
                 break;
             }
         }
         else if (e.getSource() == listInitBtn) {
             arrayList.init();
-        }
-        else if (e.getSource() == printAllBtn) {
-            arrayLabel.setText("");
-            if (arrayList.numOfDatas == 0) {
-                explainLabel.setText("배열에 데이터가 존재하지 않음");
-            }
-            else {
-                for (int i =0;i<arrayList.numOfDatas;i++) {
-                    arrayLabel.setText(arrayLabel.getText() + " [" +arrayList.List[i] + "] ");
-                }
-            }
+            printAll();
         }
 
         if (dropdownFeature.equals("Update")) {
@@ -121,6 +111,18 @@ public class Panel1 extends JPanel implements ActionListener{
         else {
             updateLabel.setVisible(false);
         updateTextField.setVisible(false);
+        }
+    }
+
+    void printAll() {
+        arrayLabel.setText("");
+        if (arrayList.numOfDatas == 0) {
+            explainLabel.setText("배열에 데이터가 존재하지 않음");
+        }
+        else {
+            for (int i =0;i<arrayList.numOfDatas;i++) {
+                arrayLabel.setText(arrayLabel.getText() + " [" +arrayList.List[i] + "] ");
+            }
         }
     }
 }
