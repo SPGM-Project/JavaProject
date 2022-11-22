@@ -17,7 +17,7 @@ public class Panel3 extends JPanel {
         JOptionPane aa = new JOptionPane();
 		String number = aa.showInputDialog("stack의 size 입력");
         int num = Integer.valueOf(number);
-        // // System.out.println(num);
+        System.out.println(num);
         cnt = num;
         JPanel upperPanel = new JPanel();
         JPanel lowerPanel = new JPanel();
@@ -71,7 +71,7 @@ public class Panel3 extends JPanel {
                             btns[cnt].setText("");
                         btns[--cnt].setText(jft);
                         stack.push(intj);
-                        // System.out.println(intj);
+                        System.out.println(intj);
                         stack.peek();
                     } catch (Exception events) {
                         // TODO: handle exception
