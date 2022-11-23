@@ -80,8 +80,20 @@ public class Panel1 extends JPanel implements ActionListener{
                 break;
 
                 case 1:
-                if (arrayList.search(Integer.parseInt(textField.getText())) != -1) {
-                    explainLabel.setText("찾으려는 데이터가 " + arrayList.search(Integer.parseInt(textField.getText())) + "번째 " + "인덱스에 있음.");
+                int searchData[] = {Integer.parseInt(textField.getText())};
+                int findData[] = new int[arrayList.List_Size];
+                StringBuffer dataStr = new StringBuffer();
+                findData = arrayList.search(searchData);
+                for (int i = 0; i < arrayList.rdSize; i++) {
+                    if (i + 1 == arrayList.rdSize) {
+                        dataStr.append(findData[i]);
+                    }
+                    else {
+                        dataStr.append(findData[i] + ", ");
+                    }
+                }
+                if (arrayList.rdSize != 0) {
+                    explainLabel.setText("찾으려는 데이터가 " + dataStr + "번째 " + "인덱스에 있음.");
                 }
                 else {
                     explainLabel.setText("찾으려는 데이터가 배열에 존재하지 않음.");

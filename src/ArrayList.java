@@ -3,6 +3,8 @@ public class ArrayList{
     int numOfDatas;
     int List_Size;
 
+    int rdSize = 0;
+
     ArrayList(int List_Size){
         this.List_Size = List_Size;
         this.List = new int[List_Size];
@@ -29,12 +31,15 @@ public class ArrayList{
         System.out.println();
     }
 
-    int search(int searchData){
-        for (int i : List){
-            if(List[i] == searchData)
-                return i;
+    int[] search(int searchData[]){
+        int returnData[] = new int[List_Size];
+        rdSize = 0;
+        for (int i = 0; i < List_Size; i++){
+            if(List[i] == searchData[0]) {
+                returnData[rdSize++] = i;
+            }
         }
-        return -1;
+        return returnData;
     }
 
     void delete(int deleteData){
@@ -57,10 +62,9 @@ public class ArrayList{
             System.out.println("데이터 없음");
             return;
         }
-        for (int i : List)
+        for (int i = 0; i < List_Size; i++)
             if (List[i] == targetData) {
                 List[i] = updateData;
-                return;
             }
     }
 }
