@@ -62,7 +62,7 @@ public class ArrayList{
             System.out.println("데이터 없음");
             return;
         }
-        for (int i : List)
+        for (int i = 0; i < List_Size; i++)
             if (List[i] == targetData) {
                 List[i] = updateData;
             }
