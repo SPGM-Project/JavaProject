@@ -10,26 +10,26 @@
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                String dropdownFeature = dropdownBox.getSelectedItem().toString();
+                String dropdownFeature = dropdownBox.getSelectedItem().toString(); // JComboBox의 선택된 기능
 
-                if (e.getSource() == enterBtn) {
-                    switch (dropdownBox.getSelectedIndex()) {
-                        case 0:
-                        if (arrayList.numOfDatas == arrayList.List_Size) {
+                if (e.getSource() == enterBtn) { // 데이터를 입력했을 때
+                    switch (dropdownBox.getSelectedIndex()) { // JComboBox의 선택된 기능 인덱스 확인
+                        case 0: // 0번 인덱스 : Insert
+                        if (arrayList.numOfDatas == arrayList.List_Size) { // ArrayList의 배열이 꽉 찼을 때 메세지 출력
                             explainLabel.setText("배열이 꽉 참.");
                             return;
                         }
-                        arrayList.insert(Integer.parseInt(textField.getText()));
-                        int nod = arrayList.numOfDatas - 1;
-                        String str = Integer.toString(nod);
-                        printAll();
-                        explainLabel.setText(String.valueOf(str) + "번째 인덱스에 데이터 " + String.valueOf(arrayList.List[nod]) + " 값을 삽입함.");
+                        arrayList.insert(Integer.parseInt(textField.getText())); // textField에 적힌 값을 ArrayList에 Insert
+                        String str = Integer.toString(arrayList.numOfDatas - 1); // 몇 번째 인덱스에 데이터가 Insert 되었는지 JLabel에 출력하기 위해 String으로 선언
+                        printAll(); // 배열 출력
+                        explainLabel.setText(String.valueOf(str) + "번째 인덱스에 데이터 " + String.valueOf(arrayList.List[nod]) + " 값을 삽입함."); // JLabel에 출력
                         break;
 
-                        case 1:
-                        int searchData[] = {Integer.parseInt(textField.getText())};
-                        int findData[] = new int[arrayList.List_Size];
-                        StringBuffer dataStr = new StringBuffer();
+                        // Search 기능을 사용했을 때 중복되는 데이터가 있을 시 여러 값을 받아야 하기에 메소드, 매개변수, return값을 int형 배열로 
+                        case 1: // 1번 인덱스 : Search
+                        int searchData[] = {Integer.parseInt(textField.getText())}; // Search 메소드의 매개변수로 들어갈 int형 배열 선언
+                        int findData[] = new int[arrayList.List_Size]; // Search 메소드의 return 값을 받을 int형 배열 선언
+                        StringBuffer dataStr = new StringBuffer(); // Search한 데이터가 몇 번째 인덱스에 들어있는지 확인하기 위해 StringBuffer형 변수로 선언
                         findData = arrayList.search(searchData);
                         for (int i = 0; i < arrayList.rdSize; i++) {
                             if (i + 1 == arrayList.rdSize) {
@@ -60,6 +60,9 @@
                 }
             }
             ```
+            - ArrayList의 기능들을 JComboBox로 선언해 드롭다운 형식으로 관리했다.  
+            JComboBox에 선택되어 있는 기능에 따라 데이터를 입력했을 때 기능이 다르게  
+            작동한다. 
 
     -   LinkedList
         -   ```java
