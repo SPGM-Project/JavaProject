@@ -29,9 +29,9 @@ public class Panel3 extends JPanel {
         JTextField jf = new JTextField(10);
         upperPanel.add(jf);
         upperPanel.add(new JLabel("정수값 입력"));
-        JButton formBTN = new JButton("등록");
-        JButton delBTN = new JButton("삭제");
-        JButton initBTN = new JButton("초기화");
+        JButton formBTN = new JButton("PUSH");
+        JButton delBTN = new JButton("POP");
+        JButton initBTN = new JButton("INIT");
         upperPanel.add(formBTN);
         upperPanel.add(delBTN);
         JLabel alert = new JLabel("알림");
