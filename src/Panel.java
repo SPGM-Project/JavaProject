@@ -1,12 +1,15 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
+import java.awt.Graphics;
+import java.awt.Image;
 /* 메뉴를 구성하는 일반적인 순서
  * 1. '메뉴바' (JMenuBar) 객체를 만듬
  * 2. '메뉴' (JMenu) 객체를 만듬 => '메뉴'를 '메뉴바'에 add
@@ -14,25 +17,31 @@ import javax.swing.JPanel;
  * 4. '메뉴바'를 에 add
  */
 class Panel extends JFrame implements ActionListener {
-
+    
     JMenuBar menuBar;
     JMenu menu1,menu2;
     JMenuItem item1, item2, item3, item4;
-
+    
     JPanel mainPanel = new JPanel();
+    JPanel main = new JPanel();
     Panel1 panel1 = new Panel1();
     Panel2 panel2 = new Panel2();
     Panel3 panel3 = new Panel3();
     Panel4 panel4 = new Panel4();
-
+    JLabel jl = new JLabel();
+    
+    ImageIcon bsImg = new ImageIcon(Panel.class.getResource("./dataStructure.png"));
     Panel(){
+        jl.setIcon(bsImg);
+        mainPanel.add(jl);
+        
         menuBar = new JMenuBar();
         menu1 = new JMenu("자료구조");
         menu2 = new JMenu("");
 
         menuBar.add(menu1);
         menuBar.add(menu2);
-
+        
         item1 = new JMenuItem("ArrayList");
         item2 = new JMenuItem("LinkedList");
         item3 = new JMenuItem("Stack");
@@ -42,14 +51,16 @@ class Panel extends JFrame implements ActionListener {
         menu1.add(item2);
         menu1.add(item3);
         menu1.add(item4);
-
+        
         setJMenuBar(menuBar);
-
+        
         add(mainPanel);
         mainPanel.add(panel1);
         mainPanel.add(panel2);
         mainPanel.add(panel3);
         mainPanel.add(panel4);
+        mainPanel.add(main);
+        
 
         item1.addActionListener(this);
         item2.addActionListener(this);
@@ -61,16 +72,17 @@ class Panel extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-
+    
     public static void main(String[] args) {
         Panel frame = new Panel();
     }
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+        jl.setVisible(false);
 		if(e.getSource() == item1) {
             if(panel1.isVisible() == false)
-                togle(0);
+            togle(0);
 		} else if(e.getSource() == item2) {
                 togle(1);
 		} else if(e.getSource() == item3){
