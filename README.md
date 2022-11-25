@@ -38,6 +38,7 @@
                         alert.setText("지울 값이 없음");
                         return;
                     }
+                }
             ```
             -   ArrayList<>를 사용해서 버튼들의 배열을 만들어 관리했다  
                 react의 useState와 같은 자동 렌더링 기술이 없어서 모두 지우고 다시 삽입하는 방법을 택하였다
