@@ -7,7 +7,57 @@
     -   ArrayList
 
         -   ```java
+@Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        String dropdownFeature = dropdownBox.getSelectedItem().toString();
 
+        if (e.getSource() == enterBtn) {
+            switch (dropdownBox.getSelectedIndex()) {
+                case 0:
+                if (arrayList.numOfDatas == arrayList.List_Size) {
+                    explainLabel.setText("배열이 꽉 참.");
+                    return;
+                }
+                arrayList.insert(Integer.parseInt(textField.getText()));
+                int nod = arrayList.numOfDatas - 1;
+                String str = Integer.toString(nod);
+                printAll();
+                explainLabel.setText(String.valueOf(str) + "번째 인덱스에 데이터 " + String.valueOf(arrayList.List[nod]) + " 값을 삽입함.");
+                break;
+
+                case 1:
+                int searchData[] = {Integer.parseInt(textField.getText())};
+                int findData[] = new int[arrayList.List_Size];
+                StringBuffer dataStr = new StringBuffer();
+                findData = arrayList.search(searchData);
+                for (int i = 0; i < arrayList.rdSize; i++) {
+                    if (i + 1 == arrayList.rdSize) {
+                        dataStr.append(findData[i]);
+                    }
+                    else {
+                        dataStr.append(findData[i] + ", ");
+                    }
+                }
+                if (arrayList.rdSize != 0) {
+                    explainLabel.setText("찾으려는 데이터가 " + dataStr + "번째 " + "인덱스에 있음.");
+                }
+                else {
+                    explainLabel.setText("찾으려는 데이터가 배열에 존재하지 않음.");
+                }
+                break;
+
+                case 2:
+                arrayList.update(Integer.parseInt(textField.getText()), Integer.parseInt(updateTextField.getText()));
+                printAll();
+                break;
+
+                case 3:
+                arrayList.delete(Integer.parseInt(textField.getText()));
+                printAll();
+                break;
+            }
+        }
             ```
 
     -   LinkedList
