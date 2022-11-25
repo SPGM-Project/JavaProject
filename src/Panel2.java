@@ -27,18 +27,18 @@ public class Panel2 extends JPanel {
         upperPanel.add(new JLabel("LinkedList"));
         upperPanel.add(jf);
         upperPanel.add(new JLabel("<-정수값 입력"));
-        JButton formBTN = new JButton("추가");
+        JButton formBTN = new JButton("INSERT");
         upperPanel.add(formBTN);
-        JButton delBTN = new JButton("삭제");
+        JButton delBTN = new JButton("DELETE");
         upperPanel.add(delBTN);
         JTextField jfU = new JTextField(10);
         upperPanel.add(jfU);
-        upperPanel.add(new JLabel("<-update"));
+        upperPanel.add(new JLabel("<-UPDATE"));
         JButton updateBTN = new JButton("Node Update");
         upperPanel.add(updateBTN);
-        JLabel alert = new JLabel("알림");
+        JLabel alert = new JLabel("ALERT");
         lowerPanel.add(alert);
-        JButton initBTN = new JButton("초기화");
+        JButton initBTN = new JButton("INIT");
         lowerPanel.add(initBTN);
         
         add(upperPanel, BorderLayout.NORTH);
